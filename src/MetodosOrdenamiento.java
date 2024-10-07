@@ -156,39 +156,41 @@ public class MetodosOrdenamiento {
    }
 
     // Método de inserción con errores
-    // Error encontrado:
-    //solucion
+    // Error encontrado: el metodo de insercion se hace a traves de un while, tambien el cambio de variables de i por j
+    //solucion se reemplaza el for por un while, dentro se le llama a la variable i y por eso el resto de arreglos i cambian por j
     public int[] insercionSegundo(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
-        for (int j = 1; j < arreglo.length; j--) {
+        for (int j = 1; j < arreglo.length; j++) {
             int actual = arreglo[j];
 
             int i = j - 1;
-            for (; j >= 0 && arreglo[j] > actual; j--) {
-                arreglo[j + 1] = arreglo[j];
+            for (i>= 0 && arreglo[i] > actual) {
+                arreglo[i + 1] = arreglo[i];
             }
             arreglo[i + 1] = actual;
+            
         }
         return arreglo;
     }
 
     // Método de inserción con errores
-    // Error encontrado:
-   // public int[] insercionTercero(int[] arregloOriginal) {
+    // Error encontrado: corregimos el while para que se adapte como debe ser el while
+    //correccion se cambia variables de while y se añade el return
+   public int[] insercionTercero(int[] arregloOriginal) {
 
-    //    int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
-     //   for (int j = 1; j < arreglo.length; j++) {
-      //      int key = arreglo[j];
-     //       int i = j;
+       int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
+       for (int j = 1; j < arreglo.length; j++) {
+           int key = arreglo[j];
+           int i = j;
 
-         //   while (i > 0 && arreglo[i] < key) {
-         //       arreglo[i + 1] = arreglo[i];
-        //        i++;
-      //      }
-       //     arreglo[i + 1] = key;
-      //  }
-    //    return new int[] { 15, 34, 1, 2, 5, 6, 7, 10 };
-  //  }
+           while (i > 0 && arreglo[i-1] > key) {
+               arreglo[i] = arreglo[i-1];
+               i--;
+           }
+           arreglo[i + 1] = key;
+       }
+       return arreglo;
+   }
 
 }
